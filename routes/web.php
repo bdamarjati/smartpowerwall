@@ -24,7 +24,6 @@ Route::get('/logout', function(){
     return Redirect::to('/');
 });
 
-// Route::get('/changePassword','ChangePasswordController@showChangePasswordForm');
 Route::get('/changePassword', [App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
 Route::post('/changePassword',[App\Http\Controllers\ChangePasswordController::class, 'changePassword'])->name('changePassword');
 
