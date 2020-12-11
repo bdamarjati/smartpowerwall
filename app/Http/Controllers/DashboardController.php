@@ -6,7 +6,13 @@ use Carbon\Carbon;
 use App\Data;
 
 class DashboardController extends Controller {
-    public function index(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    public function index()
+    {
         $data = Data::groupBy('created_at')
         ->selectRaw('UNIX_TIMESTAMP(created_at)*1000 time, sum(capacity) capacity')
         ->orderBy('time')
@@ -19,5 +25,15 @@ class DashboardController extends Controller {
             $e[] = collect($a)->merge($d);
         }
         return $e;
+    }
+
+    public function viewDashboard()
+    {
+        return view('dashboard');
+    }
+
+    public function viewUsages()
+    {
+        return view('usages');
     }
 }
