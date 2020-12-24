@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Data;
+use App\Models\Data;
 use Carbon\Carbon;
 
 class DataController extends Controller

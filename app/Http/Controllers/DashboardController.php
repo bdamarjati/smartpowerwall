@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Data;
+use App\Models\Data;
 
 class DashboardController extends Controller {
     public function __construct()
