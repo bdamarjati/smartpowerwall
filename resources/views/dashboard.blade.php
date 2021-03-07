@@ -77,8 +77,8 @@
 
             <!-- ROW WIDGET -->
             <?php
-$value = 30;
-?>
+            $value = 30;
+            ?>
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                 <div class="widget-four">
                     <div class="widget-heading">

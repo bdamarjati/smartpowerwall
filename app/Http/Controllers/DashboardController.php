@@ -36,4 +36,9 @@ class DashboardController extends Controller {
     {
         return view('usages');
     }
+
+    public function viewControl()
+    {
+        return view('control');
+    }
 }
