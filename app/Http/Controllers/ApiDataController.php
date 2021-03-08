@@ -9,7 +9,7 @@ class ApiDataController extends Controller
 {
     public function getAllData(){
         // get all data
-        $data = ApiData::get()->toJson(JSON_PRETTY_PRINT);
+        $data = ApiData::latest()->get()->toJson(JSON_PRETTY_PRINT);
         return response($data, 200);
     }
     public function addData(Request $request){
@@ -35,6 +35,7 @@ class ApiDataController extends Controller
             ], 404);
         }
     }
+
     public function updateData(Request $request, $id){
         // put data at id = $id
         if (ApiData::where('id', $id)->exists()) {

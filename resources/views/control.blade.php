@@ -11,7 +11,6 @@
 <head>
     <link rel="stylesheet" href="css/switch.css">
     <link rel="stylesheet" href="css/switch2.css">
-    <script src="js/switch.js"></script>
 </head>
 
 <body>
