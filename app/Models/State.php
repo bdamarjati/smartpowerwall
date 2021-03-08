@@ -9,5 +9,5 @@ class State extends Model
 {
     use HasFactory;
     protected $table = 'control';
-    protected $fillable = ['status'];
+    protected $fillable = ['id','switch','state'];
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiDataController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::get('ApiData/{id}',[ApiDataController::class,'getData']);
 Route::post('ApiData',[ApiDataController::class,'addData']);
 Route::put('ApiData/{id}',[ApiDataController::class,'updateData']);
 Route::delete('ApiData/{id}',[ApiDataCOntroller::class,'deleteData']);
+
+Route::get('State',[StateController::class,'getAllData']);
+Route::put('State/{id}',[StateController::class,'updateData']);
