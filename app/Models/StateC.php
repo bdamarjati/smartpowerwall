@@ -10,7 +10,7 @@ class State extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = 'control';
-    protected $fillable = ['kwh1','kwh2','kwh3'];
+    protected $fillable = ['id_kwh','state'];
     public $timestamps = false;
     public $incrementing = false;
 }

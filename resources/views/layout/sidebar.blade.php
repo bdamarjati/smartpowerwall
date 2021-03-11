@@ -35,9 +35,9 @@
             <li>
                 <a href="dashboard"> Dashboard </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="usages"> Usages </a>
-            </li>
+            </li> -->
             <li>
                 <a href="control"> Control </a>
             </li>

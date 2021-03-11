@@ -21,8 +21,8 @@
                                         <!--<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textcap"> 3 kWh</p>
-                                <h5 class="">Capacity</h5>
+                                <p class="w-value" id="textcap">  Watt</p>
+                                <h5 class="">Main Load</h5>
                             </div>
                             <div class="widget-content">
                                 <div class="w-chart">
@@ -41,8 +41,8 @@
                                         <!--<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textcharge"> 38 Watt</p>
-                                <h5 class="">Power In</h5>
+                                <p class="w-value" id="textcharge">  Watt</p>
+                                <h5 class="">Grid</h5>
                             </div>
                             <div class="widget-content">
                                 <div class="w-chart">
@@ -61,8 +61,8 @@
                                         <!--<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textload"> 28 Watt</p>
-                                <h5 class="">Load</h5>
+                                <p class="w-value" id="textload">  Watt</p>
+                                <h5 class="">Battery</h5>
                             </div>
                             <div class="widget-content">
                                 <div class="w-chart">
@@ -82,7 +82,7 @@
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                 <div class="widget-four">
                     <div class="widget-heading">
-                        <h4 class="w-value">Overview</h4>
+                        <h4 class="w-value">Main Load</h4>
                     </div>
                     <div class="widget-content">
                         <div class="vistorsBrowser">
@@ -96,13 +96,13 @@
                                 </div>
                                 <div class="w-browser-details">
                                     <div class="w-browser-info">
-                                        <h6>Capacity</h6>
-                                        <p class="browser-count">6 kWh</p>
+                                        <h6>Power (P)</h6>
+                                        <p class="browser-count" id="txtpwr"> Watt </p>
                                     </div>
                                     <div class="w-browser-stats">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-primary" role="progressbar"
-                                                style="width: 50%" aria-valuenow="90" aria-valuemin="0"
+                                        <div class="progress powerbar">
+                                            <div class="progress-bar bg-gradient-primary" id="pwrbr" role="progressbar"
+                                                style="width: 0%" aria-valuenow="90" aria-valuemin="0"
                                                 aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -120,14 +120,14 @@
                                 <div class="w-browser-details">
 
                                     <div class="w-browser-info">
-                                        <h6>Power In</h6>
-                                        <p class="browser-count">1.8 kWh</p>
+                                        <h6>Current (I)</h6>
+                                        <p class="browser-count" id="txtcrnt"> A</p>
                                     </div>
 
                                     <div class="w-browser-stats">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-danger" role="progressbar"
-                                                style="width: 30%" aria-valuenow="65" aria-valuemin="0"
+                                        <div class="progress currentbar">
+                                            <div class="progress-bar bg-gradient-danger" id="crntbr" role="progressbar"
+                                                style="width: 0%" aria-valuenow="65" aria-valuemin="0"
                                                 aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -147,14 +147,14 @@
                                 <div class="w-browser-details">
 
                                     <div class="w-browser-info">
-                                        <h6>Power Used</h6>
-                                        <p class="browser-count">900 Watt </p>
+                                        <h6>Voltage (V)</h6>
+                                        <p class="browser-count" id="txtvlt"> V </p>
                                     </div>
 
                                     <div class="w-browser-stats">
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-warning" role="progressbar"
-                                                style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                                        <div class="progress voltbar">
+                                            <div class="progress-bar bg-gradient-warning" id="vltbr" role="progressbar"
+                                                style="width: 0%" aria-valuenow="50" aria-valuemin="0"
                                                 aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -188,6 +188,7 @@ $(document).ready(function() {
 });
 </script>
 <script src="assets/js/custom.js"></script>
+
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->

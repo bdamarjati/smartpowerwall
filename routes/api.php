@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\StateBController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,10 @@ Route::get('ApiData',[ApiDataController::class,'getAllData']);
 Route::get('ApiData/{id}',[ApiDataController::class,'getData']);
 Route::post('ApiData',[ApiDataController::class,'addData']);
 Route::put('ApiData/{id}',[ApiDataController::class,'updateData']);
-Route::delete('ApiData/{id}',[ApiDataCOntroller::class,'deleteData']);
+Route::delete('ApiData/{id}',[ApiDataController::class,'deleteData']);
 
-Route::get('State',[StateController::class,'getAllData']);
-Route::put('State/{id}',[StateController::class,'updateData']);
+Route::get('StateC',[StateCController::class,'getStatus']);
+Route::post('StateC',[StateCController::class,'postValue']);
+
+Route::get('State',[StateController::class,'getStatus']);
+Route::post('State',[StateController::class,'postValue']);
