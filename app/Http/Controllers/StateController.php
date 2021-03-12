@@ -10,7 +10,9 @@ class StateController extends Controller
     public function control()
     {
         $data = State::select('id','kwh1','kwh2','kwh3')->get();
-        return view('pages.control',['data' => $data]);
+        //dd($data);
+        return view('controlb',['data' => $data]);
+        
     }
 
     public function postValue(Request $request){

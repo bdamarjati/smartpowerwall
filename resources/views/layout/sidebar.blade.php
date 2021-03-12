@@ -41,6 +41,9 @@
             <li>
                 <a href="control"> Control </a>
             </li>
+            <li>
+                <a href="controlb"> Control Test </a>
+            </li>
         </ul>
     </li>
 

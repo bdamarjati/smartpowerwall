@@ -36,5 +36,7 @@ Route::get('/usages', [App\Http\Controllers\DashboardController::class, 'viewUsa
 
 Route::get('/control', [App\Http\Controllers\DashboardController::class, 'viewControl'])->name('control');
 
+Route::get('/controlb',[App\Http\Controllers\StateController::class,'control'])->name('controlb');
+
 // Route::post('/data','DataController@store');
 // Route::get('/data', [App\Http\Controllers\DataController::class, 'view'])->name('data');

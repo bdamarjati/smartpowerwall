@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\StateController;
-use App\Http\Controllers\StateBController;
+use App\Http\Controllers\StateCController;
 
 /*
 |--------------------------------------------------------------------------
