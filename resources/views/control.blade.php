@@ -108,31 +108,32 @@
 </body>
 
 <style>
-h4.align-right {
-    text-align: right;
-    padding: 0;
-    margin: 0;
-}
+    h4.align-right {
+        text-align: right;
+        padding: 0;
+        margin: 0;
+    }
 
-h4.align-left {
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-}
+    h4.align-left {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
 
-h5.align-right {
-    text-align: right;
-    padding: 0;
-    margin: 0;
-}
+    h5.align-right {
+        text-align: right;
+        padding: 0;
+        margin: 0;
+    }
 
-h5.align-left {
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-}
+    h5.align-left {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
+
 </style>
 
 </html>
@@ -147,9 +148,10 @@ h5.align-left {
 <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
-$(document).ready(function() {
-    App.init();
-});
+    $(document).ready(function () {
+        App.init();
+    });
+
 </script>
 <script src="assets/js/custom.js"></script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->

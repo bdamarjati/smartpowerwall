@@ -24,6 +24,16 @@ class ApiDataController extends Controller
             "message" => "data record added"
         ], 201);
     }
+
+    public function graphData(Request $request){
+        $data = ApiData::latest()->get()->chunk(7);
+        $chunk = $data[0];
+        $pwr = $chunk->pluck('power');
+        $crnt = $chunk->pluck('current');
+        $vlt = $chunk->pluck('voltage');
+        return ['power'=>$pwr, 'current'=>$crnt, 'voltage'=>$vlt];
+    }
+
     public function getData($id){
         // get data at id = $id
         if (ApiData::where('id', $id)->exists()) {

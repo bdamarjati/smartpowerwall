@@ -3,6 +3,9 @@
 @section('title','Dashboard')
 
 @section('content')
+<head>
+<link rel="stylesheet" href="css/switch.css">
+</head>
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
     <div class="layout-px-spacing">
@@ -21,7 +24,7 @@
                                         <!--<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textcap">  Watt</p>
+                                <p class="w-value" id="textcap"> Watt</p>
                                 <h5 class="">Main Load</h5>
                             </div>
                             <div class="widget-content">
@@ -41,7 +44,7 @@
                                         <!--<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textcharge">  Watt</p>
+                                <p class="w-value" id="textcharge"> Watt</p>
                                 <h5 class="">Grid</h5>
                             </div>
                             <div class="widget-content">
@@ -61,7 +64,7 @@
                                         <!--<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>-->
                                     </svg>
                                 </div>
-                                <p class="w-value" id="textload">  Watt</p>
+                                <p class="w-value" id="textload"> Watt</p>
                                 <h5 class="">Battery</h5>
                             </div>
                             <div class="widget-content">
@@ -169,6 +172,24 @@
                 </div>
             </div>
 
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                <div class="widget widget-four">
+                    <div class="widget-heading">
+                        <h4 class="font-weight-bold align-left"><b>DEBUG</b>
+                        </h4>
+                    </div>
+                    <div class="widget-content">
+                        <h5 class="table-1 align-left" id="debug">TEXT
+                            
+                        </h5>
+                        </br>
+                        <h5 class="table-1 align-left">
+                            
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -183,9 +204,10 @@
 <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
-$(document).ready(function() {
-    App.init();
-});
+    $(document).ready(function () {
+        App.init();
+    });
+
 </script>
 <script src="assets/js/custom.js"></script>
 

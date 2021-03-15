@@ -13,6 +13,21 @@ try {
     var Toggle = setInterval(UpdateChart, 3000);
 
     function UpdateChart() {
+
+        $.ajax({
+            url: 'api/ChunkData',
+            success: function (data) {
+                document.getElementById("debug").innerHTML = data.power + " ; " + data.current + " ; " + data.voltage;
+                capacity[0] = data.power[6];
+                capacity[1] = data.power[5];
+                capacity[2] = data.power[4];
+                capacity[3] = data.power[3];
+                capacity[4] = data.power[2];
+                capacity[5] = data.power[1];
+                capacity[6] = data.power[0];
+            }
+        });
+
         var newcap = Math.floor(Math.random() * 361);
         var newload = Math.floor(Math.random() * 161);
         var newcharge = Math.floor(Math.random() * 161);
@@ -20,8 +35,8 @@ try {
         var newv = Math.floor(Math.random() * (225 - 215) + 215);
         var newi = (newcap / newv).toFixed(3);
 
-        capacity.shift();
-        capacity.push(newcap);
+        // capacity.shift();
+        // capacity.push(newcap);
         load.shift();
         load.push(newload);
         charge.shift();
