@@ -9,6 +9,6 @@ class ApiData extends Model
 {
     use HasFactory;
     protected $table = 'api_data';
-    protected $fillable = ['power','voltage','current'];
+    protected $fillable = ['kwh','power','voltage','current'];
 
 }

@@ -9,12 +9,14 @@ class ApiDataController extends Controller
 {
     public function getAllData(){
         // get all data
-        $data = ApiData::latest()->get()->toJson(JSON_PRETTY_PRINT);
+        $data = ApiData::latest()->get();//->toJson(JSON_PRETTY_PRINT);
         return response($data, 200);
     }
+    
     public function addData(Request $request){
         // post data
         $data = new ApiData;
+        $data->kwh = $request->kwh;
         $data->power = $request->power;
         $data->voltage = $request->voltage;
         $data->current = $request->current;
@@ -25,8 +27,8 @@ class ApiDataController extends Controller
         ], 201);
     }
 
-    public function graphData(Request $request){
-        $data = ApiData::latest()->get()->chunk(7);
+    public function graphData(Request $request, $kwh){
+        $data = ApiData::where('kwh',$kwh)->latest()->get()->chunk(7);
         $chunk = $data[0];
         $pwr = $chunk->pluck('power');
         $crnt = $chunk->pluck('current');
@@ -65,6 +67,7 @@ class ApiDataController extends Controller
             ], 404);
         }
     }
+
     public function deleteData($id){
         // delete data at id = $id
         if(ApiData::where('id', $id)->exists()) {

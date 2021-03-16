@@ -29,6 +29,7 @@ Route::put('ApiData/{id}',[ApiDataController::class,'updateData']);
 Route::delete('ApiData/{id}',[ApiDataController::class,'deleteData']);
 
 Route::get('ChunkData',[ApiDataController::class,'graphData']);
+Route::get('ChunkData/{kwh}',[ApiDataController::class,'graphData']);
 
 Route::get('StateC',[StateCController::class,'getStatus']);
 Route::post('StateC',[StateCController::class,'postValue']);
