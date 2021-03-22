@@ -16,15 +16,18 @@ try {
     var vlt3 = 0;
     var crnt3 = 0;
 
+    var pwrbr = document.getElementById("pwrbr");
+    var crntbr = document.getElementById("crntbr");
+    var vltbr = document.getElementById("vltbr");
+
     //Updating Chart
-    var Toggle = setInterval(UpdateChart, 3000);
+    //var Toggle = setInterval(UpdateChart, 3000);
 
-    function UpdateChart() {
-
+    function getData() {
         $.ajax({
             url: 'api/ChunkData/1',
             success: function (data) {
-                document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
+                //document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
                 capacity[0] = data.power[6];
                 capacity[1] = data.power[5];
                 capacity[2] = data.power[4];
@@ -35,6 +38,14 @@ try {
 
                 vlt1 = data.voltage[0];
                 crnt1 = data.current[0];
+                document.getElementById("textcap").innerHTML = capacity[6] + " Watt";
+                document.getElementById("txtpwr").innerHTML = capacity[6] + " Watt";
+                document.getElementById("txtcrnt").innerHTML = crnt1 + " A";
+                document.getElementById("txtvlt").innerHTML = vlt1 + " V";
+
+                pwrbr.setAttribute("style", "width:" + (capacity[6] * 100) / 1000 + "%");
+                crntbr.setAttribute("style", "width:" + (crnt1 * 100) / 10 + "%");
+                vltbr.setAttribute("style", "width:" + (vlt1 * 100) / 440 + "%");
             }
         });
 
@@ -52,13 +63,14 @@ try {
 
                 vlt2 = data.voltage[0];
                 crnt2 = data.current[0];
+                document.getElementById("textload").innerHTML = load[6] + " Watt";
             }
         });
 
         $.ajax({
             url: 'api/ChunkData/3',
             success: function (data) {
-                //document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
+                document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
                 charge[0] = data.power[6];
                 charge[1] = data.power[5];
                 charge[2] = data.power[4];
@@ -69,23 +81,13 @@ try {
 
                 vlt3 = data.voltage[0];
                 crnt3 = data.current[0];
+                document.getElementById("textcharge").innerHTML = charge[6] + " Watt";
             }
         });
+    }
 
-        var newcap = Math.floor(Math.random() * 361);
-        var newload = Math.floor(Math.random() * 161);
-        var newcharge = Math.floor(Math.random() * 161);
-
-        var newv = Math.floor(Math.random() * (225 - 215) + 215);
-        var newi = (newcap / newv).toFixed(3);
-
-        // capacity.shift();
-        // capacity.push(newcap);
-        // load.shift();
-        // load.push(newload);
-        // charge.shift();
-        // charge.push(newcharge);
-
+    function UpdateChart() {
+        getData();
         d_1C_7.updateSeries([{
             data: capacity
         }]);
@@ -95,23 +97,9 @@ try {
         d_1C_5.updateSeries([{
             data: charge
         }]);
-        document.getElementById("textcap").innerHTML = capacity[6] + " Watt";
-        document.getElementById("textload").innerHTML = load[6] + " Watt";
-        document.getElementById("textcharge").innerHTML = charge[6] + " Watt";
+    };
 
-        document.getElementById("txtpwr").innerHTML = capacity[6] + " Watt";
-        document.getElementById("txtcrnt").innerHTML = crnt1 + " A";
-        document.getElementById("txtvlt").innerHTML = vlt1 + " V";
-
-        $(document).ready(function () {
-            var pwrbr = document.getElementById("pwrbr");
-            var crntbr = document.getElementById("crntbr");
-            var vltbr = document.getElementById("vltbr");
-            pwrbr.setAttribute("style", "width:" + (capacity[6] * 100) / 1000 + "%");
-            crntbr.setAttribute("style", "width:" + (crnt1 * 100) / 10 + "%");
-            vltbr.setAttribute("style", "width:" + (vlt1 * 100) / 440 + "%");
-        });
-    }
+    getData();
 
     // Charge
     var d_1options3 = {
@@ -250,9 +238,9 @@ try {
     var d_1C_7 = new ApexCharts(document.querySelector("#graphcap"), d_1options5);
     d_1C_7.render()
 
-    const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
+    setInterval(UpdateChart, 8000);
 
-
+    //const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
 
 } catch (e) {
     // statements
