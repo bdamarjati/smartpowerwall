@@ -1,0 +1,61 @@
+h4.align-right {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+h4.align-center {
+    text-align: center;
+}
+
+h4.align-left {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+h5.align-right {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+h5.align-left {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column1 {
+    float: left;
+    padding: 15px;
+    height: 100px;
+    padding-top: 0px;
+}
+
+.column2 {
+    float: left;
+    padding: 15px;
+    height: 220px;
+    padding-top: 0px;
+}
+
+.left {
+    width: 65%;
+}
+
+.right {
+    width: 35%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
