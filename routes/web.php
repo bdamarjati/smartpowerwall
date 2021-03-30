@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/inverter', function(){
+    return view('inverter');
+});
+
 Route::get('/logout', function(){
     Auth::logout();
     return Redirect::to('/');
@@ -26,7 +30,6 @@ Route::get('/logout', function(){
 
 Route::get('/changePassword', [App\Http\Controllers\ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
 Route::post('/changePassword', [App\Http\Controllers\ChangePasswordController::class, 'changePassword'])->name('changePassword');
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -38,5 +41,4 @@ Route::get('/control', [App\Http\Controllers\DashboardController::class, 'viewCo
 
 Route::get('/controlb',[App\Http\Controllers\StateController::class,'control'])->name('controlb');
 
-// Route::post('/data','DataController@store');
 // Route::get('/data', [App\Http\Controllers\DataController::class, 'view'])->name('data');

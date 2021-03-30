@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\StateCController;
+use App\Http\Controllers\InverterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,8 @@ Route::post('StateC',[StateCController::class,'postValue']);
 
 Route::get('State',[StateController::class,'getStatus']);
 Route::post('State',[StateController::class,'postValue']);
+
+Route::get('InverterData',[InverterController::class,'getAllData']);
+Route::get('InverterData/{mode}',[InverterController::class,'getData']);
+Route::post('InverterData',[InverterController::class,'addData']);
+Route::delete('InverterData/{id}',[InverterController::class,'deleteData']);

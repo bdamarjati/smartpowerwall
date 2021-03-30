@@ -34,6 +34,7 @@ class ApiDataController extends Controller
         $crnt = $chunk->pluck('current');
         $vlt = $chunk->pluck('voltage');
         return ['power'=>$pwr, 'current'=>$crnt, 'voltage'=>$vlt];
+        //return $chunk;
     }
 
     public function getData($id){

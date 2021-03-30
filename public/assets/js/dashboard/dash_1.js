@@ -20,10 +20,8 @@ try {
     var crntbr = document.getElementById("crntbr");
     var vltbr = document.getElementById("vltbr");
 
-    //Updating Chart
-    //var Toggle = setInterval(UpdateChart, 3000);
-
     function getData() {
+        // Get data for main load graph and overview
         $.ajax({
             url: 'api/ChunkData/1',
             success: function (data) {
@@ -48,7 +46,7 @@ try {
                 vltbr.setAttribute("style", "width:" + (vlt1 * 100) / 440 + "%");
             }
         });
-
+        // Get data for grid graph
         $.ajax({
             url: 'api/ChunkData/2',
             success: function (data) {
@@ -66,11 +64,15 @@ try {
                 document.getElementById("textload").innerHTML = load[6] + " Watt";
             }
         });
-
+        // Get data for battery graph
         $.ajax({
             url: 'api/ChunkData/3',
             success: function (data) {
-                document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
+                //document.getElementById("debug").innerHTML = "P : " + data.power + "</br>I : " + data.current + "</br>V : " + data.voltage;
+                // var pb = data.power;
+                // var ib = data.current;
+                // var vb = data.voltage;
+
                 charge[0] = data.power[6];
                 charge[1] = data.power[5];
                 charge[2] = data.power[4];
@@ -228,15 +230,17 @@ try {
 
     // Load
     var d_1C_5 = new ApexCharts(document.querySelector("#graphcharge"), d_1options3);
-    d_1C_5.render()
+    d_1C_5.render();
 
     // Power In
     var d_1C_6 = new ApexCharts(document.querySelector("#graphload"), d_1options4);
-    d_1C_6.render()
+    d_1C_6.render();
 
     // Capacity
     var d_1C_7 = new ApexCharts(document.querySelector("#graphcap"), d_1options5);
-    d_1C_7.render()
+    d_1C_7.render();
+
+    setTimeout(UpdateChart, 500);
 
     setInterval(UpdateChart, 8000);
 
