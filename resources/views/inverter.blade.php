@@ -10,6 +10,9 @@
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
     <div class="layout-px-spacing">
+    <div class="layout-top-spacing">
+        <h3 class="font-weight-bold align-left"><i class="fas fa-circle fa-xs"></i> INVERTER</h3>
+    </div>
         <div class="row layout-top-spacing">
 
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">

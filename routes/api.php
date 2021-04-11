@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\StateCController;
 use App\Http\Controllers\InverterController;
+use App\Http\Controllers\BmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,6 @@ Route::get('InverterData',[InverterController::class,'getAllData']);
 Route::get('InverterData/{mode}',[InverterController::class,'getData']);
 Route::post('InverterData',[InverterController::class,'addData']);
 Route::delete('InverterData/{id}',[InverterController::class,'deleteData']);
+
+Route::get('BmsData',[BmsController::class,'getAllData']);
+Route::post('BmsData',[BmsController::class,'addData']);

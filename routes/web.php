@@ -41,4 +41,6 @@ Route::get('/control', [App\Http\Controllers\DashboardController::class, 'viewCo
 
 Route::get('/controlb',[App\Http\Controllers\StateController::class,'control'])->name('controlb');
 
+
+Route::get('/bms-dev',[App\Http\Controllers\BmsController::class,'tempView'])->name('tempView');
 // Route::get('/data', [App\Http\Controllers\DataController::class, 'view'])->name('data');
