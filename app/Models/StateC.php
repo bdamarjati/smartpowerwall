@@ -9,8 +9,8 @@ class StateC extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = 'controlc';
-    protected $fillable = ['id_kwh','status'];
+    protected $table = 'control_load';
+    protected $fillable = ['id_kwh', 'description', 'state'];
     public $timestamps = false;
     public $incrementing = false;
 }

@@ -9,6 +9,9 @@
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
     <div class="layout-px-spacing">
+    <div class="layout-top-spacing">
+        <h3 class="font-weight-bold align-left">MAIN PANEL</h3>
+    </div>
         <div class="row layout-top-spacing">
 
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
@@ -172,24 +175,6 @@
                 </div>
             </div>
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                <div class="widget widget-four">
-                    <div class="widget-heading">
-                        <h4 class="font-weight-bold align-left"><b>DEBUG</b>
-                        </h4>
-                    </div>
-                    <div class="widget-content">
-                        <h5 class="table-1 align-left" id="debug">TEXT
-                            
-                        </h5>
-                        </br>
-                        <h5 class="table-1 align-left">
-                            
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -207,7 +192,7 @@
     $(document).ready(function () {
         App.init();
     });
-
+    document.getElementById('menuDashboard').className = 'menu active';
 </script>
 <script src="assets/js/custom.js"></script>
 

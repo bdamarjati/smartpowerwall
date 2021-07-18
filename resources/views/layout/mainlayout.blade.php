@@ -19,10 +19,6 @@
     <link href="plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
-    <script
-      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-      data-search-pseudo-elements
-    ></script>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 </head>
 

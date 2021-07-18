@@ -7,6 +7,7 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\StateCController;
 use App\Http\Controllers\InverterController;
 use App\Http\Controllers\BmsController;
+use App\Http\Controllers\CostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,9 @@ Route::delete('ApiData/{id}',[ApiDataController::class,'deleteData']);
 Route::get('ChunkData',[ApiDataController::class,'graphData']);
 Route::get('ChunkData/{kwh}',[ApiDataController::class,'graphData']);
 
+Route::get('StatData/{kwh}',[ApiDataController::class, 'statData']);
+Route::get('CostStatData/{kwh}',[CostController::class, 'costGraphData']);
+
 Route::get('StateC',[StateCController::class,'getStatus']);
 Route::post('StateC',[StateCController::class,'postValue']);
 
@@ -40,7 +44,11 @@ Route::get('State',[StateController::class,'getStatus']);
 Route::post('State',[StateController::class,'postValue']);
 
 Route::get('InverterData',[InverterController::class,'getAllData']);
-Route::get('InverterData/{mode}',[InverterController::class,'getData']);
+Route::get('InverterDataB',[InverterController::class,'getData']);
+Route::get('InverterTable',[InverterController::class,'tableData']);
+Route::get('InverterGraph',[InverterController::class,'graphDataInverter']);
+Route::get('InverterGraphB',[InverterController::class,'graphDataInverterB']);
+Route::get('InverterGraphC',[InverterController::class,'graphDataInverterC']);
 Route::post('InverterData',[InverterController::class,'addData']);
 Route::delete('InverterData/{id}',[InverterController::class,'deleteData']);
 

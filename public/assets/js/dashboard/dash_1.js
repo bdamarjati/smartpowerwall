@@ -61,7 +61,7 @@ try {
 
                 vlt2 = data.voltage[0];
                 crnt2 = data.current[0];
-                document.getElementById("textload").innerHTML = load[6] + " Watt";
+                document.getElementById("textcharge").innerHTML = load[6] + " Watt";
             }
         });
         // Get data for battery graph
@@ -83,7 +83,7 @@ try {
 
                 vlt3 = data.voltage[0];
                 crnt3 = data.current[0];
-                document.getElementById("textcharge").innerHTML = charge[6] + " Watt";
+                document.getElementById("textload").innerHTML = charge[6] + " Watt";
             }
         });
     }
@@ -94,10 +94,10 @@ try {
             data: capacity
         }]);
         d_1C_6.updateSeries([{
-            data: load
+            data: charge
         }]);
         d_1C_5.updateSeries([{
-            data: charge
+            data: load
         }]);
     };
 
@@ -119,7 +119,7 @@ try {
         },
         series: [{
             name: 'Charge',
-            data: charge
+            data: load
         }],
         labels: ['1', '2', '3', '4', '5', '6', '7'],
         yaxis: {
@@ -160,7 +160,7 @@ try {
         },
         series: [{
             name: 'Load',
-            data: load
+            data: charge
         }],
         labels: ['1', '2', '3', '4', '5', '6', '7'],
         yaxis: {
@@ -240,7 +240,7 @@ try {
     var d_1C_7 = new ApexCharts(document.querySelector("#graphcap"), d_1options5);
     d_1C_7.render();
 
-    setTimeout(UpdateChart, 500);
+    setTimeout(UpdateChart, 2000);
 
     setInterval(UpdateChart, 8000);
 

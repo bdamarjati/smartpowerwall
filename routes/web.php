@@ -36,11 +36,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'viewDashboard'])->name('dashboard');
 
 Route::get('/usages', [App\Http\Controllers\DashboardController::class, 'viewUsages'])->name('usages');
+Route::get('/cost', [App\Http\Controllers\DashboardController::class, 'viewCost'])->name('cost');
 
-Route::get('/control', [App\Http\Controllers\DashboardController::class, 'viewControl'])->name('control');
+// Route::get('/control', [App\Http\Controllers\DashboardController::class, 'viewControl'])->name('control');
 
-Route::get('/controlb',[App\Http\Controllers\StateController::class,'control'])->name('controlb');
+Route::get('/bms', [App\Http\Controllers\DashboardController::class, 'viewBms'])->name('bms');
 
+Route::get('/controlb',[App\Http\Controllers\StateCController::class,'control'])->name('controlb');
+Route::get('/control',[App\Http\Controllers\StateController::class,'getStatus'])->name('control');
 
 Route::get('/bms-dev',[App\Http\Controllers\BmsController::class,'tempView'])->name('tempView');
-// Route::get('/data', [App\Http\Controllers\DataController::class, 'view'])->name('data');
+
+Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+Route::post('/settings', [App\Http\Controllers\SettingsController::class, 'store'])->name('settings');
+Route::post('/addLoad', [App\Http\Controllers\StateCController::class, 'addLoad'])->name('addLoad');

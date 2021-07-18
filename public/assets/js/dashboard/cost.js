@@ -11,29 +11,29 @@ try {
     var month = [];
     var day = [];
 
-    getUsageData();
+    getCostData();
 
-    function getUsageData() {
+    function getCostData() {
         //
         var kwha;
         var kwhb;
         var kwhc;
         $.ajax({
-            url: 'api/StatData/1',
+            url: 'api/CostStatData/1',
             success: function (data) {
                 kwha = data.datas;
                 suma = data.sum;
             },
         });
         $.ajax({
-            url: 'api/StatData/2',
+            url: 'api/CostStatData/2',
             success: function (data) {
                 kwhb = data.datas;
                 sumb = data.sum;
             },
         });
         $.ajax({
-            url: 'api/StatData/3',
+            url: 'api/CostStatData/3',
             success: function (data) {
                 kwhc = data.datas;
                 sumc = data.sum;
@@ -60,7 +60,7 @@ try {
                 });
             },
         });
-        setTimeout(getUsageData, 1000);
+        setTimeout(getCostData, 1000);
     }
 
     var options1 = {
@@ -689,28 +689,28 @@ try {
     }
 
     var chart1 = new ApexCharts(
-        document.querySelector("#usageMonthly"),
+        document.querySelector("#costMonthly"),
         options1
     );
 
     chart1.render();
 
     var chart = new ApexCharts(
-        document.querySelector("#chart-2"),
+        document.querySelector("#chartInfo"),
         options
     );
 
     chart.render();
 
     var chart2 = new ApexCharts(
-        document.querySelector("#chartGrid"),
+        document.querySelector("#costGrid"),
         options2
     );
 
     chart2.render();
 
     var chart3 = new ApexCharts(
-        document.querySelector("#chartBatt"),
+        document.querySelector("#costBatt"),
         options3
     );
 

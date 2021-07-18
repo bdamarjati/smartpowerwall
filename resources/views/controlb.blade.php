@@ -49,15 +49,17 @@
                                 </h5>
                             </h5>
                             </br>
-                            <h5 class="table-1 align-left">KWH 3
+                            @foreach ($data as $d)
+                            <h5 class="table-1 align-left">{{$d['description']}}
                                 <h5 class="align-right">
                                     <label class="form-switch">
-                                        <input type="checkbox" id="skwh3" value="{{$data[0]['kwh3']}}" onClick="getSwitch()">
+                                        <input type="checkbox" id="skwh3" value="{{$d['state']}}" onClick="getSwitch()">
                                         <i></i>
                                     </label>
                                 </h5>
                             </h5>
                             </br>
+                            @endforeach
                             <!-- Just for debugging purpose it's such pain in the ass to change the tab every debugging -->
                             <h5 class="table-1 align-left">API DATA :
                                 <h5 class="align-right" id="debug">TEXT</h5>
@@ -117,12 +119,13 @@ h5.align-left {
 $(document).ready(function() {
     App.init();
 });
+document.getElementById('menuDashboard').className = 'menu active';
 </script>
 <script src="assets/js/custom.js"></script>
 <script>
-    document.getElementById("skwh1").checked = 0;
-    document.getElementById("skwh2").checked = 0;
-    document.getElementById("skwh3").checked = 0;
+    // document.getElementById("skwh1").checked = 0;
+    // document.getElementById("skwh2").checked = 0;
+    // document.getElementById("skwh3").checked = 0;
 
     var skwh1 = document.getElementById("skwh1").getAttribute("value");
     var skwh2 = document.getElementById("skwh2").getAttribute("value");
@@ -132,14 +135,19 @@ $(document).ready(function() {
     setTimeout(updateSwitch(),1000);
     setTimeout(getSwitch(),1000);
     function updateSwitch(){
+        // skwh1 = document.getElementById("skwh1").getAttribute("value");
+        // skwh2 = document.getElementById("skwh2").getAttribute("value");
+        // skwh3 = document.getElementById("skwh3").getAttribute("value");
         if(skwh1 != 0){
             document.getElementById("skwh1").checked = true;
         }
         if(skwh2 != 0){
             document.getElementById("skwh2").checked = true;
+            // document.getElementById("skwh3").checked = false;
         }
         if(skwh3 != 0){
             document.getElementById("skwh3").checked = true;
+            // document.getElementById("skwh2").checked = false;
         }
         //considering swap to switch instead of if
     };
@@ -159,17 +167,25 @@ $(document).ready(function() {
         switch(y){
             case true :
                 y = 1;
+                z = 0;
+                document.getElementById("skwh3").checked = false;
                 break;
             case false :
                 y = 0;
+                z = 1;
+                document.getElementById("skwh3").checked = true;
                 break;
         }
         switch(z){
             case true :
                 z = 1;
+                y = 0;
+                document.getElementById("skwh2").checked = false;
                 break;
             case false :
                 z = 0;
+                y = 1;
+                document.getElementById("skwh2").checked = true;
                 break;
         }
         document.getElementById("swdebug").innerHTML = x+" ; "+y+" ; "+z;
@@ -184,6 +200,7 @@ $(document).ready(function() {
                 kwh3:z
             }
         });
+        // updateSwitch();
     };
 </script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->

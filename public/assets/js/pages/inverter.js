@@ -5,22 +5,103 @@ try {
     }
 
     // Usage
-    var usage = [16600, 16800, 15500, 17800, 15500, 17000, 19000, 16000, 15000, 17000, 14000, 17000];
-    var charge = [16500, 17500, 16200, 17300, 16000, 19500, 16000, 17000, 16000, 19000, 18000, 19000];
-    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var usage = []; //[166, 168, 155, 178, 155, 170, 190, 160, 150, 170, 140, 170];
+    var crnt = [];
+    var freq = [];
+    var charge = [165, 175, 162, 173, 160, 195, 160, 170, 160, 190, 180, 190];
+    var load = [166, 168, 155, 178, 155, 170, 190, 160, 150, 170, 140, 170];
+    var month = [];
 
-    //Updating Chart
-    var Toggle = setInterval(UpdateChart, 3000);
+    // Realtime Data
+    $.ajax({
+        url: 'api/InverterDataB',
+        success: function (data) {
+            var mode = data.mode;
+            var freq = data.freq;
+            var volt = data.voltage;
+            var amp = data.current;
+            switch (mode) {
+                case 1:
+                    txtmode = "GRID";
+                    document.getElementById('invmode').style.color = '#e7515a';
+                    break;
+                case 2:
+                    txtmode = "INVERTER 1";
+                    document.getElementById('invmode').style.color = '#fff';
+                    break;
+                case 3:
+                    txtmode = "INVERTER 2";
+                    break;
+            }
+            document.getElementById('invfreq').innerHTML = freq + " Hz";
+            document.getElementById('invvolt').innerHTML = volt + " Volt";
+            document.getElementById('invamp').innerHTML = amp.toFixed(2) + " A";
+            document.getElementById('invmode').innerHTML = txtmode;
+        }
+    });
+
+
+    // Updating Chart
+    // var Toggle = setInterval(UpdateChart, 3000);
+    var Toggle = setInterval(getChartData, 3000);
+
+    function getChartData() {
+        //
+        $.ajax({
+            url: 'api/InverterGraph',
+            success: function (data) {
+                // usage.push(data.data);
+                // document.getElementById('txtdebug').innerHTML = data.data;
+                chart1.updateOptions({
+                    series: [{
+                        name: 'Usages',
+                        data: data.data
+                    }],
+                });
+                month.push(data.time[0])
+            }
+        });
+        $.ajax({
+            url: 'api/InverterGraphB',
+            success: function (data) {
+                // usage.push(data.data);
+                // document.getElementById('txtdebug').innerHTML = data.data;
+                chart2.updateOptions({
+                    series: [{
+                        name: 'Current',
+                        data: data.data
+                    }],
+                });
+                month.push(data.time[0])
+            }
+        });
+        $.ajax({
+            url: 'api/InverterGraphC',
+            success: function (data) {
+                // usage.push(data.data);
+                // document.getElementById('txtdebug').innerHTML = data.data;
+                chart3.updateOptions({
+                    series: [{
+                        name: 'Frequency',
+                        data: data.data
+                    }],
+                });
+                month.push(data.time[0])
+            }
+        });
+    }
 
     function UpdateChart() {
-        var newusage = Math.floor(Math.random() * 20000) + 10000;
-        var newcharge = Math.floor(Math.random() * 20000) + 10000;
-        var newload = Math.floor(Math.random() * 20000) + 10000;
+        var newusage = Math.floor(Math.random() * 200) + 100;
+        var newcharge = Math.floor(Math.random() * 200) + 100;
+        var newload = Math.floor(Math.random() * 200) + 100;
 
         usage.shift();
         usage.push(newusage);
         charge.shift();
         charge.push(newcharge);
+        load.shift();
+        load.push(newload);
 
         var thismonth = month[0];
         month.shift();
@@ -35,20 +116,16 @@ try {
 
         chart2.updateOptions({
             series: [{
-                name: 'Usages',
-                data: usage
+                name: 'Cherges',
+                data: charge
             }],
         });
 
         chart3.updateOptions({
             series: [{
-                name: 'Usages',
-                data: usage
+                name: 'Loads',
+                data: load
             }],
-        });
-
-        chart.updateOptions({
-            series: [newusage, newcharge, newload]
         });
     }
 
@@ -124,7 +201,7 @@ try {
         yaxis: {
             labels: {
                 formatter: function (value, index) {
-                    return (value / 1000) + 'K'
+                    return value
                 },
                 offsetX: -22,
                 offsetY: 0,
@@ -252,8 +329,8 @@ try {
             lineCap: 'square'
         },
         series: {
-            name: 'Usages',
-            data: usage
+            name: 'Current',
+            data: crnt
         },
         labels: month,
         xaxis: {
@@ -279,7 +356,7 @@ try {
         yaxis: {
             labels: {
                 formatter: function (value, index) {
-                    return (value / 1000) + 'K'
+                    return value
                 },
                 offsetX: -22,
                 offsetY: 0,
@@ -407,8 +484,8 @@ try {
             lineCap: 'square'
         },
         series: {
-            name: 'Usages',
-            data: usage
+            name: 'Frequency',
+            data: freq
         },
         labels: month,
         xaxis: {
@@ -434,7 +511,7 @@ try {
         yaxis: {
             labels: {
                 formatter: function (value, index) {
-                    return (value / 1000) + 'K'
+                    return value
                 },
                 offsetX: -22,
                 offsetY: 0,
@@ -518,15 +595,15 @@ try {
     }
 
     var chart1 = new ApexCharts(
-        document.querySelector("#usageMonthly"),
+        document.querySelector("#chartInvVolt"),
         options1
     );
     var chart2 = new ApexCharts(
-        document.querySelector("#usageMonthlyB"),
+        document.querySelector("#chartInvAmp"),
         options2
     );
     var chart3 = new ApexCharts(
-        document.querySelector("#usageMonthlyC"),
+        document.querySelector("#chartInvFreq"),
         options3
     );
     chart1.render();

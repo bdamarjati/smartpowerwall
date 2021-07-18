@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\State;
+use App\Models\StateC;
 
-class StateController extends Controller
-{
-    public function control()
-    {
+class StateController extends Controller {
+    
+    public function control(){
         $data = State::select('id','kwh1','kwh2','kwh3')->get();
+        $datac = StateC::select('id_kwh', 'description', 'state')->get();
         //dd($data);
-        return view('controlb',['data' => $data]);
-        
+        return view('controlb',['data' => $data, 'datac' => $datac]);
     }
 
     public function postValue(Request $request){
@@ -33,9 +33,9 @@ class StateController extends Controller
 
     public function getStatus(){
       $data = State::select('id','kwh1','kwh2','kwh3')->get();
-
-      return $data;
+      $datac = StateC::select('id_kwh', 'description', 'state')->get();
+      // return ['data' => $data, 'datac' => $datac];
+      return view('control',['data' => $data, 'datac' => $datac]);
     }
-
 }
 ?>

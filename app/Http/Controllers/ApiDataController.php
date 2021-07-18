@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use App\Models\ApiData;
 
 class ApiDataController extends Controller
@@ -35,6 +37,40 @@ class ApiDataController extends Controller
         $vlt = $chunk->pluck('voltage');
         return ['power'=>$pwr, 'current'=>$crnt, 'voltage'=>$vlt];
         //return $chunk;
+    }
+
+    public function statData($kwh){
+        //
+        // $mm = strtotime(date("F"));
+        $sum = 0;
+        $mm = strtotime("April");
+        $month = (int)date("m", $mm);
+        if($month != (int)date("m")){
+            $day = cal_days_in_month(CAL_GREGORIAN, $month, (int)date("Y"));
+        }
+        else{
+            $day = (int)date("d");
+        }
+        $datas = new Collection();
+        for($i=1; $i<=$day; $i++){
+            $data = ApiData::where('kwh',$kwh)
+            ->whereMonth('created_at', $month)
+            ->whereDay('created_at', $i)
+            ->get();
+            if($data->isEmpty()||!$data){
+                $pwr = 0;
+                $datas->push($pwr);
+            }
+            else{
+                $pwr = $data->pluck('power')->sum();
+                $pwr = $pwr/1000;
+                $pwr = round($pwr,2);
+                $datas->push($pwr);
+                $sum = $sum + $pwr;
+            }
+        }
+
+        return ['datas' => $datas, 'cday' => $day, 'sum' => $sum];//response()->json($datas);
     }
 
     public function getData($id){

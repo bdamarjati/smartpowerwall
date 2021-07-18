@@ -41,4 +41,20 @@ class DashboardController extends Controller {
     {
         return view('control');
     }
+
+    public function viewBms()
+    {
+        return view('bms');
+    }
+
+    public function viewControlb()
+    {
+        return view('controlb');
+    }
+
+    public function viewCost()
+    {
+        return view('cost');
+    }
+
 }
