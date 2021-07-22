@@ -37,5 +37,10 @@ class StateController extends Controller {
       // return ['data' => $data, 'datac' => $datac];
       return view('control',['data' => $data, 'datac' => $datac]);
     }
+
+    public function checkGrid(){
+      $data = State::select('kwh2','kwh1')->first();
+      return $data;
+    }
 }
 ?>

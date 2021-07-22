@@ -15,10 +15,21 @@ try {
     var crnt2 = 0;
     var vlt3 = 0;
     var crnt3 = 0;
+    var temp = 0;
 
     var pwrbr = document.getElementById("pwrbr");
     var crntbr = document.getElementById("crntbr");
     var vltbr = document.getElementById("vltbr");
+
+    var pwrbbr = document.getElementById("pwrbbr");
+    var crntbbr = document.getElementById("crntbbr");
+    var vltbbr = document.getElementById("vltbbr");
+
+    var suma = 0;
+
+    // var pwrcbr = document.getElementById("pwrcbr");
+    // var crntcbr = document.getElementById("crntcbr");
+    // var vltcbr = document.getElementById("vltcbr");
 
     function getData() {
         // Get data for main load graph and overview
@@ -36,6 +47,7 @@ try {
 
                 vlt1 = data.voltage[0];
                 crnt1 = data.current[0];
+                sum1 = data.sum;
                 document.getElementById("textcap").innerHTML = capacity[6] + " Watt";
                 document.getElementById("txtpwr").innerHTML = capacity[6] + " Watt";
                 document.getElementById("txtcrnt").innerHTML = crnt1 + " A";
@@ -44,6 +56,9 @@ try {
                 pwrbr.setAttribute("style", "width:" + (capacity[6] * 100) / 1000 + "%");
                 crntbr.setAttribute("style", "width:" + (crnt1 * 100) / 10 + "%");
                 vltbr.setAttribute("style", "width:" + (vlt1 * 100) / 440 + "%");
+
+                document.getElementById("txtpwrb").innerHTML = sum1 + " Watt";
+                pwrbbr.setAttribute("style", "width:" + (sum1 * 100) / 1000 + "%");
             }
         });
         // Get data for grid graph
@@ -61,7 +76,11 @@ try {
 
                 vlt2 = data.voltage[0];
                 crnt2 = data.current[0];
+                sum2 = data.sum;
                 document.getElementById("textcharge").innerHTML = load[6] + " Watt";
+                document.getElementById("txtcrntb").innerHTML = sum2 + " Watt";
+                crntbbr.setAttribute("style", "width:" + (sum2 * 100) / 1000 + "%");
+
             }
         });
         // Get data for battery graph
@@ -83,8 +102,32 @@ try {
 
                 vlt3 = data.voltage[0];
                 crnt3 = data.current[0];
+                sum3 = data.sum;
                 document.getElementById("textload").innerHTML = charge[6] + " Watt";
+                document.getElementById("txtvltb").innerHTML = sum2 + " Watt";
+                vltbbr.setAttribute("style", "width:" + (sum3 * 100) / 1000 + "%");
+
+                // pwrcbr.setAttribute("style", "width:" + (load[6] * 100) / 1000 + "%");
+                // crntcbr.setAttribute("style", "width:" + (crnt3 * 100) / 10 + "%");
+                // vltcbr.setAttribute("style", "width:" + (vlt3 * 100) / 440 + "%");
             }
+        });
+
+        $.ajax({
+            url: 'api/CostStatData/1',
+            success: function (data) {
+                suma = data.sum;
+                document.getElementById("txtpwrc").innerHTML = "Rp. " + suma.toLocaleString("id-ID");
+            },
+        });
+        $.ajax({
+            url: 'api/CostStatData/2',
+            success: function (data) {
+                sumb = data.sum;
+                sumc = suma - sumb;
+                document.getElementById("txtcrntc").innerHTML = "Rp. " + sumb.toLocaleString("id-ID");
+                document.getElementById("txtvltc").innerHTML = "Rp. " + sumc.toLocaleString("id-ID");
+            },
         });
     }
 

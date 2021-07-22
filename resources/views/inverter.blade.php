@@ -84,7 +84,7 @@
             </div>
 
             <div class="layout-px-spacing layout-top-spacing">
-                <h3 class="font-weight-bold align-left">STATISTICS</h3>
+                <h3 class="font-weight-bold align-left" id="debug">STATISTICS</h3>
             </div>
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">

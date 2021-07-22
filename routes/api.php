@@ -8,6 +8,8 @@ use App\Http\Controllers\StateCController;
 use App\Http\Controllers\InverterController;
 use App\Http\Controllers\BmsController;
 use App\Http\Controllers\CostController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +42,7 @@ Route::get('CostStatData/{kwh}',[CostController::class, 'costGraphData']);
 Route::get('StateC',[StateCController::class,'getStatus']);
 Route::post('StateC',[StateCController::class,'postValue']);
 
-Route::get('State',[StateController::class,'getStatus']);
+Route::get('checkGrid',[StateController::class,'checkGrid']);
 Route::post('State',[StateController::class,'postValue']);
 
 Route::get('InverterData',[InverterController::class,'getAllData']);
@@ -54,3 +56,7 @@ Route::delete('InverterData/{id}',[InverterController::class,'deleteData']);
 
 Route::get('BmsData',[BmsController::class,'getAllData']);
 Route::post('BmsData',[BmsController::class,'addData']);
+
+Route::get('getUser',[UserController::class, 'getUser']);
+Route::get('showUser/{id}',[UserController::class, 'showUser']);
+Route::get('delete/{id}',[UserController::class, 'delete']);

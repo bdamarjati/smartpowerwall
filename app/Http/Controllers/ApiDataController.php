@@ -30,20 +30,24 @@ class ApiDataController extends Controller
     }
 
     public function graphData(Request $request, $kwh){
+        // $mm = strtotime("April");
+        $mm = strtotime(date("F"));
+        $month = (int)date("m", $mm);
+        $sum = ApiData::where('kwh',$kwh)->whereMonth('created_at', $month)->pluck('power')->sum();
         $data = ApiData::where('kwh',$kwh)->latest()->get()->chunk(7);
         $chunk = $data[0];
         $pwr = $chunk->pluck('power');
         $crnt = $chunk->pluck('current');
         $vlt = $chunk->pluck('voltage');
-        return ['power'=>$pwr, 'current'=>$crnt, 'voltage'=>$vlt];
+        return ['power'=>$pwr, 'current'=>$crnt, 'voltage'=>$vlt, 'sum'=>round($sum,2)];
         //return $chunk;
     }
 
     public function statData($kwh){
         //
-        // $mm = strtotime(date("F"));
+        $mm = strtotime(date("F"));
         $sum = 0;
-        $mm = strtotime("April");
+        // $mm = strtotime("April");
         $month = (int)date("m", $mm);
         if($month != (int)date("m")){
             $day = cal_days_in_month(CAL_GREGORIAN, $month, (int)date("Y"));

@@ -50,3 +50,10 @@ Route::get('/bms-dev',[App\Http\Controllers\BmsController::class,'tempView'])->n
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
 Route::post('/settings', [App\Http\Controllers\SettingsController::class, 'store'])->name('settings');
 Route::post('/addLoad', [App\Http\Controllers\StateCController::class, 'addLoad'])->name('addLoad');
+Route::post('deleteLoad', [App\Http\Controllers\SettingsController::class, 'deleteLoad'])->name('deleteLoad');
+
+Route::post('/addUser',[App\Http\Controllers\UserController::class, 'storeUser'])->name('addUser');
+Route::post('updateUser',[App\Http\Controllers\UserController::class, 'updateUser'])->name('updateUser');
+Route::get('showUser/{id}',[App\Http\Controllers\UserController::class, 'showUser']);
+Route::get('deleteUser/{id}',[App\Http\Controllers\UserController::class, 'delete']);
+

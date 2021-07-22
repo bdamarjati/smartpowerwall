@@ -7,13 +7,16 @@
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
     <div class="layout-px-spacing">
+    <div class="layout-top-spacing">
+        <h3 class="font-weight-bold align-left">MAIN PANEL COSTS</h3>
+    </div>
 
         <div class="row layout-top-spacing">
 
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-chart-one">
                     <div class="widget-heading">
-                        <h5 class="">Cost from Grid</h5>
+                        <h5 class="">Cost from Main Load</h5>
                         <ul class="tabs tab-pills">
                             <li><a href="javascript:void(0);" id="tb_1" class="tabmenu">Monthly</a></li>
                         </ul>
@@ -32,7 +35,7 @@
             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-chart-two">
                     <div class="widget-heading">
-                        <h5 class="">Powerflow by Category</h5>
+                        <h5 class="">Flow of Cost by Category</h5>
                     </div>
                     <div class="widget-content">
                         <div class="tabs tab-content">
@@ -51,7 +54,7 @@
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-chart-one">
                             <div class="widget-heading">
-                                <h5 class="">Grid</h5>
+                                <h5 class="">Cost from Grid</h5>
                             </div>
 
                             <div class="widget-content">
@@ -67,7 +70,7 @@
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                         <div class="widget widget-chart-one">
                             <div class="widget-heading">
-                                <h5 class="">Battery</h5>
+                                <h5 class="">Cost Saving from Battery</h5>
                             </div>
 
                             <div class="widget-content">

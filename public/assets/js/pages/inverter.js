@@ -10,7 +10,7 @@ try {
     var freq = [];
     var charge = [165, 175, 162, 173, 160, 195, 160, 170, 160, 190, 180, 190];
     var load = [166, 168, 155, 178, 155, 170, 190, 160, 150, 170, 140, 170];
-    var month = [];
+    var month = [300, 400, 600];
 
     // Realtime Data
     $.ajax({
@@ -58,7 +58,20 @@ try {
                         data: data.data
                     }],
                 });
-                month.push(data.time[0])
+                month[0] = data.time[0];
+                month[1] = data.time[1];
+                month[2] = data.time[2];
+                month[3] = data.time[3];
+                month[4] = data.time[4];
+                month[5] = data.time[5];
+                month[6] = data.time[6];
+                month[7] = data.time[7];
+                month[8] = data.time[8];
+                month[9] = data.time[9];
+                month[10] = data.time[10];
+                month[11] = data.time[11];
+                // month.push(data.time[0])
+                // document.getElementById('debug').innerHTML = month;
             }
         });
         $.ajax({
@@ -72,7 +85,7 @@ try {
                         data: data.data
                     }],
                 });
-                month.push(data.time[0])
+                // month.push(data.time[0])
             }
         });
         $.ajax({
@@ -86,46 +99,8 @@ try {
                         data: data.data
                     }],
                 });
-                month.push(data.time[0])
+                // month.push(data.time[0])
             }
-        });
-    }
-
-    function UpdateChart() {
-        var newusage = Math.floor(Math.random() * 200) + 100;
-        var newcharge = Math.floor(Math.random() * 200) + 100;
-        var newload = Math.floor(Math.random() * 200) + 100;
-
-        usage.shift();
-        usage.push(newusage);
-        charge.shift();
-        charge.push(newcharge);
-        load.shift();
-        load.push(newload);
-
-        var thismonth = month[0];
-        month.shift();
-        month.push(thismonth);
-
-        chart1.updateOptions({
-            series: [{
-                name: 'Usages',
-                data: usage
-            }],
-        });
-
-        chart2.updateOptions({
-            series: [{
-                name: 'Cherges',
-                data: charge
-            }],
-        });
-
-        chart3.updateOptions({
-            series: [{
-                name: 'Loads',
-                data: load
-            }],
         });
     }
 
@@ -177,7 +152,7 @@ try {
             name: 'Usages',
             data: usage
         },
-        labels: month,
+        labels: month, //['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'], //month,
         xaxis: {
             axisBorder: {
                 show: false
